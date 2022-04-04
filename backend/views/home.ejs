@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+    </head>
+    <body>
+        <div>
+            <h1 class="main_heading">TODO App</h1>
+        </div>
+        <hr>
+        <div>
+            <ul>
+                <% for (let i of todo_List){ %>
+                    <li>
+                        <p><%= i.task %></p>
+                        <p><%= i.date %></p>
+                        <p><%= i.option %></p>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+
+        <form action="/create-task" method="POST">
+            <hr>
+            <div class="div1 div_margin">
+                <p class="sub_headings">DESCRIPTION</p>
+                <input type="text" name="task" class="description_box" id="addInput" placeholder="What do you need to do?" required>
+            </div>
+            <div style="height: 80px;">
+                <div class="div2 div_margin pos">
+                    <p class="sub_headings">CATEGORY</p>
+                    <!-- <input type="checkbox" id="category_dropdown"> -->
+                    <label for="category_dropdown"></label>
+                    <select name="option" id="category_dropdown" class="category_custom_dropdown">
+                        <option value="Choose a category">Choose a category</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="School">School</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <span class="vl"></span>
+                <div class="div2 div_margin">
+                    <p class="sub_headings">DUE DATE</p>
+                    <label for="schedule_date"></label>
+                    <input type="date" id="schedule_date" name="date">
+                </div>
+            </div>
+            <div>
+                <br>
+                <br>
+                <br>
+            </div>
+            <div class="div3">
+                <div>
+                    <button type="submit" class="btn1" id="btn1"> <i class="fa fa-solid fa-plus"></i> <span> &nbsp ADD TASK</span> </button>
+                    <button type="submit" class="btn2" id="btn2"> <i class="fa fa-solid fa-trash"></i> <span> &nbsp DELETE TASK</span> </button>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
