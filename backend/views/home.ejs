@@ -3,22 +3,12 @@
         <title>
             <%= title %>
         </title>
+        <link rel="stylesheet" href="/css/home.css">
+        <script src="https://kit.fontawesome.com/24846080d6.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div>
             <h1 class="main_heading">TODO App</h1>
-        </div>
-        <hr>
-        <div>
-            <ul>
-                <% for (let i of todo_List){ %>
-                    <li>
-                        <p><%= i.task %></p>
-                        <p><%= i.date %></p>
-                        <p><%= i.option %></p>
-                    </li>
-                <% } %>
-            </ul>
         </div>
 
         <form action="/create-task" method="POST">
@@ -27,6 +17,7 @@
                 <p class="sub_headings">DESCRIPTION</p>
                 <input type="text" name="task" class="description_box" id="addInput" placeholder="What do you need to do?" required>
             </div>
+            <hr>
             <div style="height: 80px;">
                 <div class="div2 div_margin pos">
                     <p class="sub_headings">CATEGORY</p>
@@ -48,17 +39,41 @@
                     <input type="date" id="schedule_date" name="date">
                 </div>
             </div>
-            <div>
-                <br>
-                <br>
-                <br>
-            </div>
             <div class="div3">
                 <div>
                     <button type="submit" class="btn1" id="btn1"> <i class="fa fa-solid fa-plus"></i> <span> &nbsp ADD TASK</span> </button>
-                    <button type="submit" class="btn2" id="btn2"> <i class="fa fa-solid fa-trash"></i> <span> &nbsp DELETE TASK</span> </button>
+                    <button formaction="/removetask"  type="submit" class="btn2" id="btn2"><i class="fa fa-solid fa-trash"></i> <span> &nbsp DELETE TASK</span> </button>
                 </div>
             </div>
+            <hr>
+        <div>
+            <ul id="taskList">
+                <% for (let i of todo_List){ %>
+                    <li>
+                        <!-- <div>
+                            <a href="/delete-task/?date=<%= i.date %>&task=<%= i.task %>">
+                                <i class="fas fa-square-check"></i>
+                               
+                            </a>
+                            
+                        </div> -->
+                        <div class="details">
+                            <input type ="checkbox" id="${task.id}" class="custom-checkbox checkbox">
+                            <label for="${task.id}"></label>
+                            <p><%= i.task %></p>
+                            <p><%= i.date %></p>
+                            <p><%= i.option %></p>
+                        </div>
+                    </li>
+                    <!-- <div>
+                        <a <a href="/delete-btn/?date=<%= i.date %>&task=<%= i.task %>">
+                            <button>Delete</button>
+                        </a>
+                    </div> -->
+                <% } %>
+            </ul>
+        </div>
         </form>
+        <script src="/js/home.js"></script>
     </body>
 </html>
