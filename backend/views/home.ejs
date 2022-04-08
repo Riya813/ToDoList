@@ -58,9 +58,9 @@
                             
                         </div> -->
                         <div class="details">
-                            <input type ="checkbox" id="${task.id}" class="custom-checkbox checkbox">
-                            <label for="${task.id}"></label>
-                            <p><%= i.task %></p>
+                            <input name="checkbox" type ="checkbox" id="<%= i._id%>" class="custom-checkbox checkbox">
+                            <label for="${task.id}"><%= i.task %></label>
+                            <!-- <p><%= i.task %></p> -->
                             <p><%= i.date %></p>
                             <p><%= i.option %></p>
                         </div>
