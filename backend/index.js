@@ -48,27 +48,25 @@ app.get('/', function(req, res){
 // })
 var complete = ["finish jquery"]
 
-app.get('/removetask', function(req, res){
+app.post('/removetask', function(req, res){
     //get the id from query in the ul
-    let id = req.query.id;
-
-    //find the contact in the database using id and delete
-    ToDo.findByIdAndDelete(id, function(){
-        if(err){
-            console.log('error in deleting an object');
-            return;
+    /*
+    {
+        "234234234": "on",
+        "2342342342453453": "on"
+    }
+    */
+    console.log(req.body);
+    const bodyObj = req.body;
+    ToDo.deleteMany({id: {$in: Object.keys(bodyObj)}}, function(err, result) {
+        if (err) {
+            console.log(err);            
+        } else {
+          console.log(result);
         }
-
         return res.redirect('back');
-        
     });
-    // var deleteTask = req.body.check;
-    // let taskIndex = toDoList.findIndex(task => task.deleteTask == deleteTask);
-    
-    // if(taskIndex != -1){
-    //     toDoList.splice(taskIndex, 1);
-    // }
-
+    // let id = req.query.id;
     
 });
 
@@ -89,7 +87,7 @@ app.post('/create-task', function(req, res){
     //     date: req.body.date,
     //     option: req.body.option
     // });
-
+    console.log("create task called", req.body);
     ToDo.create({
         task: req.body.task,
         date: req.body.date,

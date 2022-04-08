@@ -6,7 +6,8 @@ main().catch(err => console.log(err));
 
 //acquire the connection (to check if it is successful)
 async function main() {
-  await mongoose.connect('mongodb://localhost:27017/toDo_List_db');
+  // await mongoose.connect('mongodb://localhost:27017/toDo_List_db');
+  await mongoose.connect('mongodb+srv://root:toor@cluster0.iafal.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 };
 
 //error
