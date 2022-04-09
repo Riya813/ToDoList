@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//todo model schema
 const toDoSchema = new mongoose.Schema({
     task: {
         type: String,

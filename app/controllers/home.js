@@ -1,5 +1,7 @@
+//importing model
 const ToDo = require('../models/toDo');
 
+//function for index route
 exports.getHome = function(req, res){
     ToDo.find({}, function(err, tasks){
         if(err){
@@ -14,6 +16,7 @@ exports.getHome = function(req, res){
     });
 };
 
+//function for creating new task
 exports.createTask = function(req, res){
     console.log("create task called", req.body);
     ToDo.create({
@@ -31,6 +34,7 @@ exports.createTask = function(req, res){
     });
 };
 
+//function for removing any task
 exports.removeTask = function(req, res){
     const bodyObj = req.body;
     console.log(req.body);
