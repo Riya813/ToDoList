@@ -10,3 +10,13 @@ btnCreate.addEventListener('click', function(){
 btnRemove.addEventListener('click', function(){
     removeTaskForm.submit();
 });
+
+createTaskForm.addEventListener('focus', function(e) {
+    e.target.classList.add('blue-bg');
+    e.target.parentElement.classList.add('blue-bg');
+}, true);
+
+createTaskForm.addEventListener('blur', function(e) {
+    e.target.classList.remove('blue-bg');
+    e.target.parentElement.classList.remove('blue-bg');
+}, true);
