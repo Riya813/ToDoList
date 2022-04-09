@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="/images/list.ico">
+        <script src="https://kit.fontawesome.com/24846080d6.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="to-do-card">
+            <div>
+                <h1 class="main_heading">TODO App</h1>
+            </div>
+                <form action="/create-task" method="POST" id="create-task-form" autocomplete="off">
+                    <div class="div1 div_margin">
+                        <p class="sub_headings">DESCRIPTION</p>
+                        <input type="text" name="task" class="description_box" id="addInput" placeholder="What do you need to do?" required autocomplete="off">
+                    </div>
+                    <div class="two-column">
+                        <div class="div_margin pos">
+                            <p class="sub_headings">CATEGORY</p>
+                            <!-- <input type="checkbox" id="category_dropdown"> -->
+                            <label for="category_dropdown"></label>
+                            <select name="option" id="category_dropdown" class="category_custom_dropdown">
+                                <option value="">Choose a category</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Work">Work</option>
+                                <option value="School">School</option>
+                                <option value="Cleaning">Cleaning</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div class="div_margin">
+                            <p class="sub_headings">DUE DATE</p>
+                            <label for="schedule_date"></label>
+                            <input type="date" id="schedule_date" name="date" required>
+                        </div>
+                    </div>
+                </form>
+                <div class="div3">
+                    <button type="submit" class="btn1" id="create-task"> <i class="fa fa-solid fa-plus"></i> <span> ADD TASK</span> </button>
+                    <button type="submit" class="btn2" id="remove-task"><i class="fa fa-solid fa-trash"></i> <span> DELETE TASK</span> </button>
+                </div>
+            <div>
+                <form action="/removetask" method="POST" id="remove-task-form">
+                    <ul id="taskList">
+                        <% for (let i of todo_List){ %>
+                            <li>
+                                <div class="details">
+                                    <input name="<%= i._id%>" id="<%= i._id%>" type ="checkbox" class="custom-checkbox checkbox">
+                                    <div class="content">
+                                        <label for="<%= i._id%>"><%= i.task %></label>
+                                        <!-- <p><%= i.task %></p> -->
+                                        <% var date = new Date(i.date) %>
+                                        <p>
+                                            <i class="fa fa-solid fa-calendar"></i>
+                                            <%= date.toLocaleString('default', { month: 'short' })%>
+                                            <%= date.getUTCDate()%>,
+                                            <%= date.getUTCFullYear()%>
+                                        </p>
+                                    </div>
+                                    <span class="<%= i.option %>">
+                                        <%= i.option %>
+                                    </span>
+                                </div>
+                            </li>
+                        <% } %>
+                    </ul>
+                </form>
+            </div>
+        </div>
+
+        <script src="/js/home.js"></script>
+    </body>
+</html>

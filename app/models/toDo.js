@@ -11,7 +11,7 @@ const toDoSchema = new mongoose.Schema({
     },
     option: {
         type: String,
-        required: true
+        required: false
     }
 });
 
